@@ -5,24 +5,16 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    // remotePatterns: [
-    //   {
-    //     protocol: "http",
-    //     hostname: "localhost",
-    //     port: "5002",
-    //     pathname: "/**",
-    //   },
-    // ],
     domains: ["localhost"],
   },
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/auth/login', // ganti dengan rute tujuan Anda
-        permanent: true, // true untuk pengalihan permanen (status 308)
+        source: "/",
+        destination: "/landingpage", // Ganti dengan path tujuan
+        permanent: true, // Atur ke true jika redirect bersifat permanen
       },
-    ]
+    ];
   },
 };
 

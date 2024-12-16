@@ -1,8 +1,7 @@
-"use client";
 import React from 'react'
 
-export default function HomePage() {
+export default function page() {
   return (
-    <div>HomePage</div>
+    <div>page</div>
   )
 }

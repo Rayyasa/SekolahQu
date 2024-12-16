@@ -14,7 +14,7 @@ interface MapelCardProps {
   onDelete?: (id: number) => void;
 }
 
-const MapelCard = ({ id_mapel, nama_mapel, guru, showActions = false, onDelete }: MapelCardProps) => {
+const MapelCard = ({ id_mapel, nama_mapel, guru, showActions = true, onDelete }: MapelCardProps) => {
   const router = useRouter();
 
   return (

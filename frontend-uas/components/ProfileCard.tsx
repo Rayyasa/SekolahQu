@@ -22,6 +22,16 @@ interface ProfileCardProps {
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ profile, status, isFetching }) => {
   const router = useRouter();
+  // Di ProfileCard.tsx, tambahkan logika untuk mengarahkan berdasarkan role
+const handleUpdateProfile = () => {
+  if (profile?.data.role === "admin") {
+    router.push("/admin/update/profile");
+  } else if (profile?.data.role === "guru") {
+    router.push("/guru/update/profile");
+  } else if (profile?.data.role === "siswa") {
+    router.push("/siswa/update/profile");
+  }
+};
 
   return (
     <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
@@ -66,19 +76,19 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profile, status, isFetching }
             </div>
             <button
               className="btn bg-[#16ab39] text-white hover:bg-white hover:text-[#16ab39] m-5"
-              onClick={() => router.push(`/admin/update/profile`)}
+              onClick={handleUpdateProfile}
             >
               Update Profile
             </button>
           </dl>
         </div>
-        <div className="px-4 py-4 sm:px-6 flex justify-end">
+        {/* <div className="px-4 py-4 sm:px-6 flex justify-end">
           <Button
             title="Logout"
             colorSchema="red"
             onClick={() => signOut()}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

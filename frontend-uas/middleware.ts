@@ -9,6 +9,10 @@ export default withAuth(function middleware(req: any) {
   console.log("req", url);
   console.log("role", role);
 
+  if (url === "/landingpage") {
+    return NextResponse.next();
+  }
+
   if (url.startsWith("/admin") === true) {
     if (role !== "admin") {
       return NextResponse.rewrite(new URL('/notaccess', req.url))
@@ -37,8 +41,15 @@ export default withAuth(function middleware(req: any) {
 },
   {
     callbacks: {
-      authorized: ({ token }) => {
+      authorized: ({ token,req }) => {
+        const url = req.nextUrl?.pathname;
+
+        // Izinkan akses ke halaman '/' tanpa autentikasi
+        if (url === "/") {
+          return true;
+        }
         if (token) return true;
+        
         return false;
       },
     },
@@ -50,5 +61,48 @@ export default withAuth(function middleware(req: any) {
 );
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*", "/siswa", "/siswa/:path","/guru","/guru/:path"],
+  matcher: [ "/admin", "/admin/:path*", "/siswa", "/siswa/:path", "/guru", "/guru/:path"],
 };
+// import { NextRequest, NextResponse } from "next/server";
+// import { withAuth } from "next-auth/middleware";
+
+// export default withAuth(
+//   function middleware(req: any) {
+//     const url = req?.nextUrl?.pathname;
+//     const role = req?.nextauth?.token.role; 
+
+//     console.log(req?.nextauth?.token.role);
+
+//     if (url.startsWith("/admin") === true && role !== 'admin') {
+//       return NextResponse.rewrite(new URL('/auth/notaccess', req.url));
+//     }
+    
+//     if (url.startsWith("/peminjam") === true && role !== 'peminjam') {
+//       return NextResponse.rewrite(new URL('/auth/notaccess', req.url));
+//     }
+    
+//     if (url.startsWith("/petugas") === true && role !== 'petugas') {
+//       return NextResponse.rewrite(new URL('/auth/notaccess', req.url));
+//     }
+
+//     return NextResponse.next();
+//   },
+//   {
+//     callbacks: {
+//       authorized: ({ token }) => {
+//         if (token) return true;
+//         return false;
+//       },
+//     },
+//     pages: {
+//       signIn: "/auth/login",
+//       error: "/api/auth/error",
+//     },
+//   }
+// );
+
+// export const config = {
+//   // matcher: ['/admin/:path*','/peminjam/:path*','/petugas/:path*']
+//   // matcher: ['/admin', '/siswa', '/petugas', '/'] 
+//    matcher: ['/admin', '/admin/:path*', '/peminjam', '/peminjam/:path*', '/petugas', '/petugas/:path*', '/']
+// }

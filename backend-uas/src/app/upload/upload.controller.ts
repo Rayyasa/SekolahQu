@@ -36,7 +36,7 @@ export class UploadController extends BaseResponse {
         },
       }),
       fileFilter: (req, file, cb) => {
-        if (!file.originalname.match(/\.(jpg|jpeg|png|gif|pdf)$/)) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png|gif|pdf)$/i)) {
           return cb(
             new HttpException('Tipe file tidak valid', HttpStatus.BAD_REQUEST),
             false

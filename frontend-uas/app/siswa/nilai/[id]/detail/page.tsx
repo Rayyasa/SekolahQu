@@ -65,7 +65,7 @@ const DetailNilaiSiswa = ({ params }: { params: { id: string } }) => {
               <thead>
                 <tr>
                   <th>Mata Pelajaran</th>
-                  <th>Semester</th>
+                  {/* <th>Semester</th> */}
                   <th>Nilai Pengetahuan</th>
                   <th>Nilai Keterampilan</th>
                 </tr>
@@ -74,7 +74,7 @@ const DetailNilaiSiswa = ({ params }: { params: { id: string } }) => {
                 {data?.data.map((i: any, e: any) => (
                   <tr key={e}>
                     <td>{i.mapel.nama_mapel}</td>
-                    <td>{i.semester}</td>
+                    {/* <td>{i.semester}</td> */}
                     <td>{i.nilai_pengetahuan}</td>
                     <td>{i.nilai_keterampilan}</td>
                   </tr>

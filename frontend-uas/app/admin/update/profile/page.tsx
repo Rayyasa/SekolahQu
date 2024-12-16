@@ -100,9 +100,9 @@ const UpdateProfile = () => {
                     const file = event.target.files[0];
                     console.log("file", file);
 
-                    if (file.type !== "image/jpeg") {
-                      return alert("type tidak sesauai");
-                    }
+                    // if (file.type !== "image/jpeg") {
+                    //   return alert("type tidak sesauai");
+                    // }
 
                     let reader = new FileReader();
                     reader.onloadend = () => {

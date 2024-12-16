@@ -62,7 +62,10 @@ const Login = () => {
             <h1 className="block text-4xl sm:text-5xl font-bold text-gray-700 ">
               Sign in
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-gray-600 dark:text-neutral-400">
+            <p className="mt-4 text-base sm:text-lg text-gray-700 dark:text-neutral-400">
+              Silahkan Login dengan akun yang sudah diberikan oleh Admin 😊
+            </p>
+            {/* <p className="mt-4 text-base sm:text-lg text-gray-600 dark:text-neutral-400">
               Kamu Belum Punya Akun?
               <a
                 className="text-[#16ab39] decoration-2 hover:underline font-medium"
@@ -70,7 +73,7 @@ const Login = () => {
               >
                 Bikin dulu disini👈
               </a>
-            </p>
+            </p> */}
           </div>
           <div className="mt-5">
             <FormikProvider value={formik}>
